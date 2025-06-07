@@ -33,8 +33,8 @@ This app allows users to add and delete notes directly on the page — perfect f
 
 ## 👩🏻 About Me
 
-Created with ❤️ by Khoerunnisa — an aspiring Front-End Developer
-📫 [LinkedIn] | [GitHub]
+Created by Khoerunnisa — an aspiring Front-End Developer
+📫 [LinkedIn](https://www.linkedin.com/in/khoerunnisasy) | [GitHub](https://github.com/khoerunnisasy)
 
 ---
 
