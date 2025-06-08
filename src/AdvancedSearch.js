@@ -31,7 +31,6 @@ class AdvancedSearch extends HTMLElement {
     const searchInput = this.querySelector('#searchInput');
     const filterButtons = this.querySelectorAll('.filter-btn');
 
-    // Search input with debounce
     let searchTimeout;
     searchInput.addEventListener('input', (e) => {
       clearTimeout(searchTimeout);
@@ -41,7 +40,6 @@ class AdvancedSearch extends HTMLElement {
       }, 300);
     });
 
-    // Filter buttons
     filterButtons.forEach(btn => {
       btn.addEventListener('click', (e) => {
         // Update active button
@@ -65,7 +63,6 @@ class AdvancedSearch extends HTMLElement {
     this.dispatchEvent(event);
   }
 
-  // Method to programmatically set search term
   setSearchTerm(term) {
     const searchInput = this.querySelector('#searchInput');
     if (searchInput) {
@@ -75,7 +72,6 @@ class AdvancedSearch extends HTMLElement {
     }
   }
 
-  // Method to programmatically set filter
   setFilter(filter) {
     const filterButtons = this.querySelectorAll('.filter-btn');
     filterButtons.forEach(btn => {
