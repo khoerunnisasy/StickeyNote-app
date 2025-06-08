@@ -31,7 +31,6 @@ class EditModal extends HTMLElement {
     const cancelBtn = this.querySelector('.cancel-btn');
     const form = this.querySelector('#editForm');
 
-    // Close modal events
     closeBtn.addEventListener('click', () => this.hide());
     cancelBtn.addEventListener('click', () => this.hide());
     
@@ -41,13 +40,11 @@ class EditModal extends HTMLElement {
       }
     });
 
-    // Handle form submission
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       this.handleSubmit();
     });
 
-    // Close on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.isVisible()) {
         this.hide();
@@ -67,10 +64,8 @@ class EditModal extends HTMLElement {
     const overlay = this.querySelector('.modal-overlay');
     overlay.style.display = 'flex';
     
-    // Focus on title input
     setTimeout(() => titleInput.focus(), 100);
     
-    // Prevent body scroll
     document.body.style.overflow = 'hidden';
   }
 
@@ -78,11 +73,9 @@ class EditModal extends HTMLElement {
     const overlay = this.querySelector('.modal-overlay');
     overlay.style.display = 'none';
     
-    // Reset form
     this.querySelector('#editForm').reset();
     this.currentNoteId = null;
     
-    // Restore body scroll
     document.body.style.overflow = '';
   }
 
@@ -96,12 +89,10 @@ class EditModal extends HTMLElement {
     const body = this.querySelector('#editBody').value.trim();
 
     if (!title || !body) {
-      // Could use SweetAlert here, but keeping it simple
       alert('Judul dan isi catatan tidak boleh kosong!');
       return;
     }
 
-    // Dispatch custom event with edit data
     const event = new CustomEvent('note-edit-submit', {
       detail: {
         id: this.currentNoteId,
