@@ -21,7 +21,6 @@ class NoteItem extends HTMLElement {
     const title = this.getAttribute("title") || "";
     const body = this.getAttribute("body") || "";
 
-    // Format date
     const formattedDate = createdAt ? 
       new Date(createdAt).toLocaleDateString('id-ID', {
         day: '2-digit',
@@ -55,7 +54,6 @@ class NoteItem extends HTMLElement {
     const unarchiveBtn = this.shadowRoot.querySelector('.unarchive-btn');
     const deleteBtn = this.shadowRoot.querySelector('.delete-btn');
 
-    // Edit button
     editBtn?.addEventListener('click', () => {
       const event = new CustomEvent('edit-note', {
         detail: { 
@@ -69,7 +67,6 @@ class NoteItem extends HTMLElement {
       this.dispatchEvent(event);
     });
 
-    // Archive button
     archiveBtn?.addEventListener('click', () => {
       const event = new CustomEvent('archive-note', {
         detail: { id: this.getAttribute('id') },
@@ -79,7 +76,6 @@ class NoteItem extends HTMLElement {
       this.dispatchEvent(event);
     });
 
-    // Unarchive button
     unarchiveBtn?.addEventListener('click', () => {
       const event = new CustomEvent('unarchive-note', {
         detail: { id: this.getAttribute('id') },
@@ -89,7 +85,6 @@ class NoteItem extends HTMLElement {
       this.dispatchEvent(event);
     });
 
-    // Delete button
     deleteBtn?.addEventListener('click', () => {
       const event = new CustomEvent('delete-note', {
         detail: { id: this.getAttribute('id') },
@@ -106,7 +101,6 @@ class NoteItem extends HTMLElement {
     return div.innerHTML;
   }
 
-  // Method to check if note matches search criteria
   matchesSearch(searchTerm) {
     if (!searchTerm) return true;
     
@@ -117,7 +111,6 @@ class NoteItem extends HTMLElement {
     return title.includes(term) || body.includes(term);
   }
 
-  // Method to get archive status
   isArchived() {
     return this.getAttribute('archived') === 'true';
   }
