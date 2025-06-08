@@ -42,7 +42,6 @@ class AdvancedSearch extends HTMLElement {
 
     filterButtons.forEach(btn => {
       btn.addEventListener('click', (e) => {
-        // Update active button
         filterButtons.forEach(b => b.classList.remove('active'));
         e.target.classList.add('active');
         
