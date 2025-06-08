@@ -4,8 +4,8 @@
   border-radius: 18px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
   padding: 20px;
-  padding-top: 48px; /* ruang untuk tombol */
-  padding-right: 48px; /* ruang agar isi tidak ketutup tombol */
+  padding-top: 48px;
+  padding-right: 48px;
   backdrop-filter: blur(12px);
   transition: 0.3s ease;
   overflow: hidden;
@@ -94,7 +94,6 @@
   z-index: 2;
 }
 
-/* Tanggal di bawah */
 .note-date {
   display: block;
   margin-top: 16px;
