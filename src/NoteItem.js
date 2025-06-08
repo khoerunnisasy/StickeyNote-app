@@ -15,12 +15,10 @@ class NoteItem extends HTMLElement {
   async render() {
     const response = await fetch("styles/note-item-style.css");
     const css = await response.text();
-
     const isArchived = this.getAttribute("archived") === "true";
     const createdAt = this.getAttribute("created-at");
     const title = this.getAttribute("title") || "";
     const body = this.getAttribute("body") || "";
-
     const formattedDate = createdAt ? 
       new Date(createdAt).toLocaleDateString('id-ID', {
         day: '2-digit',
