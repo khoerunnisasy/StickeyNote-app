@@ -42,41 +42,30 @@ async function unarchiveNote(id) {
   return response.json();
 }
 
-// Note: The Dicoding API doesn't support editing notes directly
-// This is a simulation of what an edit function would look like
 async function editNote(id, title, body) {
-  // Since the API doesn't support PUT/PATCH for editing,
-  // we'll simulate it by deleting and recreating the note
-  // In a real application, you'd have a proper edit endpoint
-  
   try {
-    // Delete the old note
     await deleteNote(id);
-    
-    // Create a new note with the updated content
     const result = await addNote(title, body);
     
     return result;
+    
   } catch (error) {
     throw new Error('Failed to edit note: ' + error.message);
   }
 }
 
-// Helper function to get all notes (active + archived)
 async function getAllNotes() {
   try {
     const [activeNotes, archivedNotes] = await Promise.all([
       getNotes(),
       getArchivedNotes()
     ]);
-    
-    // Mark archived notes
+
     const markedArchivedNotes = archivedNotes.map(note => ({
       ...note,
       archived: true
     }));
-    
-    // Mark active notes
+
     const markedActiveNotes = activeNotes.map(note => ({
       ...note,
       archived: false
