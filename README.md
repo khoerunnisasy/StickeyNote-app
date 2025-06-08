@@ -6,9 +6,16 @@
 
 - **Create Notes**: Add new notes dengan title dan body
 - **Edit Notes**: Update existing notes secara real-time
+- **Archive System**: Move notes between active dan archived states
 - **Delete Notes**: Remove notes dengan confirmation dialog
 - **Local Storage**: Data tersimpan di browser secara otomatis
 - **Responsive Design**: Tampilan optimal di berbagai ukuran layar
+
+## 🔍 Advanced Search
+
+- **Real-time Filtering**: Instant search results saat typing
+- **Multi-field Search**: Search berdasarkan title dan content
+- **Case Insensitive**: Flexible search tanpa case sensitivity
 
 ## 🛠️ Teknologi yang Digunakan
 
@@ -28,18 +35,20 @@
 
 ```
 StickeyNote-app/
-├── 📄 index.html          # Main HTML structure
-├── 🎨 styles/
-│    ── style.css          # Primary styles
-├── ⚙️ scripts/
-│   ├── app.js            # Main application logic
-│   ├── storage.js        # Local storage management
-│   ├── utils.js          # Utility functions
-│   └── validation.js     # Form validation
-├── 🖼️ assets/
-│   ├── icons/            # SVG icons
-│   └── images/           # Images & graphics
-└── 📚 README.md          # Documentation
+├── index.html               # Main HTML structure
+├── public
+│ ├── styles/
+│   ├── note-item-style.css  # Note item styles
+│   └── style.css            # Primary styles
+├── src/
+│   ├── main.js              # Main application logic
+│   ├── AdvancedSearch.js    # Search logic
+│   ├── AppBar.js            # Bar logic
+│   ├── NoteInput.js         # Note Input logic
+│   ├── NoteItem.js          # Note item logic
+│   ├── EditModal.js         # edit logic
+│   └── NoteApi.js           # Fetch API
+└── README.md                # Documentation
 ```
 
 ### 💻 Cara Menjalankan
@@ -87,9 +96,15 @@ npm run serve
 
 ### 2. Managing Notes
 - **Delete**: Click delete icon dengan confirmation
+- **Archive**: Click archive icon untuk memindahkan ke archived
+- **Unarchive**: Click unarchive icon untuk kembali ke active
+- **Delete**: Click delete icon dengan confirmation
+- **Search**: Use search bar untuk filter notes
 
 ### 3. Navigation
 - **Active Tab**: Menampilkan notes yang sedang aktif
+- **Archived Tab**: Menampilkan notes yang telah diarsipkan
+- **Search Bar**: Real-time search across all notes
 
 ## 🎯 Konsep yang Dipelajari
 
