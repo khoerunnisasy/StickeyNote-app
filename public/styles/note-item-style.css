@@ -1,141 +1,105 @@
 .note {
-    border: 1px solid #ddd;
-    padding: 15px;
-    background: white;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
-    position: relative;
-    border-radius: 10px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    overflow: hidden;
+  position: relative;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  padding: 20px;
+  padding-top: 48px; /* ruang untuk tombol */
+  padding-right: 48px; /* ruang agar isi tidak ketutup tombol */
+  backdrop-filter: blur(12px);
+  transition: 0.3s ease;
+  overflow: hidden;
 }
 
 .note:hover {
-    transform: translateY(-2px);
-    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.note.archived {
-    opacity: 0.7;
-    border-left: 4px solid #ffc107;
-    background: #fefefe;
-}
-
-.note.archived::before {
-    content: "📁 Archived";
-    position: absolute;
-    top: 10px;
-    left: 15px;
-    background: #ffc107;
-    color: white;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 10px;
-    font-weight: bold;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
 }
 
 .note h3 {
-    margin: 0 0 10px 0;
-    color: #333;
-    font-size: 18px;
-    padding-right: 80px;
-    word-wrap: break-word;
-}
-
-.note.archived h3 {
-    margin-top: 20px;
+  margin: 0 0 12px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  word-break: break-word;
 }
 
 .note p {
-    margin: 0;
-    color: #666;
-    line-height: 1.5;
-    padding-right: 20px;
-    word-wrap: break-word;
-    max-height: 120px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+  max-height: 140px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.note p::-webkit-scrollbar {
+  width: 10px;
+}
+
+.note p::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
 }
 
 .note-actions {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    gap: 5px;
-    flex-direction: column;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+  z-index: 2;
 }
 
 .action-btn {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 6px 8px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 12px;
-    transition: all 0.2s ease;
-    min-width: 60px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
 }
 
 .action-btn:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
-.edit-btn {
-    background: #28a745;
+.edit-btn { background: #28a745; }
+.archive-btn { background: #ffc107; color: #333; }
+.unarchive-btn { background: #17a2b8; }
+.delete-btn { background: #dc3545; }
+
+.note.archived {
+  opacity: 0.75;
+  border-left: 4px solid #ffc107;
+  padding-top: 56px;
 }
 
-.edit-btn:hover {
-    background: #218838;
+.note.archived::before {
+  content: "📁 Archived";
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  background: #ffc107;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: bold;
+  z-index: 2;
 }
 
-.archive-btn {
-    background: #ffc107;
-    color: #333;
-}
-
-.archive-btn:hover {
-    background: #e0a800;
-}
-
-.unarchive-btn {
-    background: #17a2b8;
-}
-
-.unarchive-btn:hover {
-    background: #138496;
-}
-
-.delete-btn {
-    background: #dc3545;
-}
-
-.delete-btn:hover {
-    background: #c82333;
-}
-
+/* Tanggal di bawah */
 .note-date {
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
-    font-size: 11px;
-    color: #999;
-    font-style: italic;
-}
-
-.note-tags {
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-
-.note-tag {
-    background: #e9ecef;
-    color: #495057;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 11px;
-    font-weight: 500;
+  display: block;
+  margin-top: 16px;
+  font-size: 0.75rem;
+  color: #888;
+  font-style: italic;
+  text-align: right;
 }
