@@ -19,20 +19,15 @@ import {
 const notesContainer = document.getElementById("notesContainer");
 const noteForm = document.getElementById("noteForm");
 
-// Store all notes for filtering
 let allNotes = [];
 let currentFilter = 'all';
 let currentSearchTerm = '';
 
-// Create search and edit components
 const advancedSearch = document.createElement('advanced-search');
 const editModal = document.createElement('edit-modal');
-
-// Insert search component after app-bar
 const appBar = document.querySelector('app-bar');
-appBar.insertAdjacentElement('afterend', advancedSearch);
 
-// Insert edit modal at the end of body
+appBar.insertAdjacentElement('afterend', advancedSearch);
 document.body.appendChild(editModal);
 
 async function loadNotes(filter = 'all', searchTerm = '') {
@@ -41,7 +36,6 @@ async function loadNotes(filter = 'all', searchTerm = '') {
   }
   
   try {
-    // Get notes based on filter
     let notes;
     switch (filter) {
       case 'active':
@@ -57,10 +51,8 @@ async function loadNotes(filter = 'all', searchTerm = '') {
         break;
     }
 
-    // Store all notes for filtering
     allNotes = notes;
     
-    // Apply search filter
     let filteredNotes = notes;
     if (searchTerm) {
       filteredNotes = notes.filter(note => {
@@ -71,17 +63,14 @@ async function loadNotes(filter = 'all', searchTerm = '') {
       });
     }
 
-    // Clear container
     notesContainer.innerHTML = "";
 
-    // Show empty state if no notes
     if (filteredNotes.length === 0) {
       const emptyState = getEmptyStateHTML(filter, searchTerm);
       notesContainer.innerHTML = emptyState;
       return;
     }
 
-    // Render notes
     filteredNotes.forEach(({ id, title, body, archived, createdAt }) => {
       const note = document.createElement("note-item");
       note.setAttribute("id", id);
@@ -141,9 +130,6 @@ function getEmptyStateHTML(filter, searchTerm) {
   }
 }
 
-// Event Listeners
-
-// Search and filter changes
 document.addEventListener('search-filter-change', async (event) => {
   const { searchTerm, filter } = event.detail;
   currentFilter = filter;
@@ -151,7 +137,6 @@ document.addEventListener('search-filter-change', async (event) => {
   await loadNotes(filter, searchTerm);
 });
 
-// Delete note
 document.addEventListener("delete-note", async (event) => {
   const noteId = event.detail.id;
 
@@ -184,7 +169,6 @@ document.addEventListener("delete-note", async (event) => {
   }
 });
 
-// Archive note
 document.addEventListener("archive-note", async (event) => {
   const noteId = event.detail.id;
 
@@ -206,7 +190,6 @@ document.addEventListener("archive-note", async (event) => {
   }
 });
 
-// Unarchive note
 document.addEventListener("unarchive-note", async (event) => {
   const noteId = event.detail.id;
 
@@ -228,18 +211,15 @@ document.addEventListener("unarchive-note", async (event) => {
   }
 });
 
-// Edit note
 document.addEventListener("edit-note", (event) => {
   const { id, title, body } = event.detail;
   editModal.show({ id, title, body });
 });
 
-// Handle edit form submission
 document.addEventListener("note-edit-submit", async (event) => {
   const { id, title, body } = event.detail;
 
   try {
-    // Show loading
     Swal.fire({
       title: 'Menyimpan...',
       didOpen: () => {
@@ -267,7 +247,6 @@ document.addEventListener("note-edit-submit", async (event) => {
   }
 });
 
-// Add new note
 noteForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -283,7 +262,6 @@ noteForm.addEventListener("submit", async (event) => {
   }
 
   try {
-    // Show loading
     Swal.fire({
       title: 'Menambahkan...',
       didOpen: () => {
@@ -303,7 +281,6 @@ noteForm.addEventListener("submit", async (event) => {
       showConfirmButton: false
     });
     
-    // If we're viewing archived notes, switch to active notes
     if (currentFilter === 'archived') {
       advancedSearch.setFilter('active');
     } else {
@@ -318,9 +295,7 @@ noteForm.addEventListener("submit", async (event) => {
   }
 });
 
-// Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
-  // Ctrl/Cmd + F for search
   if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
     e.preventDefault();
     const searchInput = document.querySelector('#searchInput');
@@ -330,7 +305,6 @@ document.addEventListener('keydown', (e) => {
     }
   }
   
-  // Ctrl/Cmd + N for new note
   if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
     e.preventDefault();
     const titleInput = document.querySelector('#title');
@@ -340,5 +314,4 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Initialize
 loadNotes();
