@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stickey Note - Enhanced</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
+  </head>
+  <body>
+    <app-bar></app-bar>
+    
+    <note-input></note-input>
+    
+    <div class="notes-container" id="notesContainer">
+      <div class="loading-spinner"></div>
+    </div>
+    
+    <p id="error-message" style="display: none; color: red"></p>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
